@@ -2,14 +2,12 @@ Name:           zaz
 Version:        1.0.0
 Release:        %mkrel 1
 Summary:        A puzzle game where the player has to arrange balls in triplets
-
 Group:          Games/Arcade
 # Music released under CC-BY-SA
 License:        GPLv3+ and CC-BY-SA
 URL:            http://sourceforge.net/projects/zaz/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-
 BuildRequires: libmesagl1-devel
 BuildRequires: libSDL_image-devel
 BuildRequires: libtheora-devel
@@ -82,7 +80,6 @@ if [ $1 -eq 0 ] ; then
     gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 fi
 
-
 %posttrans
 gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
@@ -95,7 +92,6 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_datadir}/pixmaps/%{name}.xpm
 #{_datadir}/%{name}/FreeMonoBold.ttf
 #{_datadir}/%{name}/FreeSans.ttf
-
 
 %doc AUTHORS ChangeLog COPYING data/copyright.txt
 
