@@ -3,7 +3,7 @@ Version:        1.0.0
 Release:        %mkrel 1
 Summary:        A puzzle game where the player has to arrange balls in triplets
 
-Group:          Amusements/Games
+Group:          Games/Arcade
 # Music released under CC-BY-SA
 License:        GPLv3+ and CC-BY-SA
 URL:            http://sourceforge.net/projects/zaz/
