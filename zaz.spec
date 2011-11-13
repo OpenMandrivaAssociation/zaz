@@ -10,27 +10,13 @@ URL:            http://sourceforge.net/projects/zaz/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-%if 0%{?mandriva_version} 
 BuildRequires: libmesagl1-devel
 BuildRequires: libSDL_image-devel
 BuildRequires: libtheora-devel
 BuildRequires: libvorbis-devel
 BuildRequires: libftgl-devel >=2.1.3
 BuildRequires: gettext
-%endif
 
-%if 0%{?fedora_version}
-BuildRequires:  mesa-libGL-devel
-BuildRequires:  SDL_image-devel
-BuildRequires:  libtheora-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  ftgl-devel  >= 2.1.3
-BuildRequires:  gettext
-BuildRequires:  desktop-file-utils
-Requires:       gnu-free-mono-fonts
-Requires:       gnu-free-sans-fonts
-Requires:       oflb-dignas-handwriting-fonts
-%endif
 
 %description
 Zaz is an arcade action puzzle game where the goal is to get rid of all 
