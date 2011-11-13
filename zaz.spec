@@ -12,7 +12,7 @@ BuildRequires: libmesagl1-devel
 BuildRequires: libSDL_image-devel
 BuildRequires: libtheora-devel
 BuildRequires: libvorbis-devel
-#BuildRequires: libftgl-devel >=2.1.3
+BuildRequires: libftgl-devel
 BuildRequires: gettext
 
 
