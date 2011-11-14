@@ -14,7 +14,7 @@ BuildRequires: libtheora-devel
 BuildRequires: libvorbis-devel
 BuildRequires: libftgl-devel
 BuildRequires: gettext
-
+BuildRequires: desktop-file-utils
 
 %description
 Zaz is an arcade action puzzle game where the goal is to get rid of all 
