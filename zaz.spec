@@ -8,7 +8,11 @@ License:        GPLv3+ and CC-BY-SA
 URL:            http://sourceforge.net/projects/zaz/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+%ifarch x86_64
+BuildRequires: lib64mesagl1-devel
+%else
 BuildRequires: libmesagl1-devel
+%endif
 BuildRequires: libSDL_image-devel
 BuildRequires: libtheora-devel
 BuildRequires: libvorbis-devel
