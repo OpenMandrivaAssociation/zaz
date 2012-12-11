@@ -1,22 +1,17 @@
 Name:           zaz
 Version:        1.0.0
-Release:        %mkrel 1
+Release:        1
 Summary:        A puzzle game where the player has to arrange balls in triplets
 Group:          Games/Arcade
 # Music released under CC-BY-SA
 License:        GPLv3+ and CC-BY-SA
 URL:            http://sourceforge.net/projects/zaz/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-%ifarch x86_64
-BuildRequires: lib64mesagl1-devel
-%else
-BuildRequires: libmesagl1-devel
-%endif
-BuildRequires: libSDL_image-devel
-BuildRequires: libtheora-devel
-BuildRequires: libvorbis-devel
-BuildRequires: libftgl-devel
+BuildRequires: pkgconfig(gl)
+BuildRequires: pkgconfig(SDL_image)
+BuildRequires: pkgconfig(theora)
+BuildRequires: pkgconfig(vorbis)
+BuildRequires: pkgconfig(ftgl)
 BuildRequires: gettext
 BuildRequires: desktop-file-utils
 
@@ -26,11 +21,12 @@ incoming balls by rearranging their order and making triplets.
 It currently includes 6 different levels. The game's name is recursive and 
 stands for "Zaz ain't Z".
 
-A 3D accelerator is needed for decent gameplay.
+A 3D accelerator is needed for decent game play.
 
 
 %prep
 %setup -q
+rm -fr win32.zip
 
 # Fix permissions
 chmod 644 src/*.{cpp,h}
@@ -38,24 +34,11 @@ chmod 644 src/*.{cpp,h}
 
 %build
 %configure
-
-make %{?_smp_mflags}
+%make
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
-
-# Symlink system fonts
-#rm $RPM_BUILD_ROOT%{_datadir}/%{name}/data/FreeMonoBold.ttf
-#ln -s %{_datadir}/fonts/gnu-free/FreeMonoBold.ttf \
-#    $RPM_BUILD_ROOT%{_datadir}/%{name}/data/FreeMonoBold.ttf
-#rm $RPM_BUILD_ROOT%{_datadir}/%{name}/FreeSans.ttf
-#ln -s %{_datadir}/fonts/gnu-free/FreeSans.ttf \
-#   $RPM_BUILD_ROOT%{_datadir}/%{name}/FreeSans.ttf
-#m $RPM_BUILD_ROOT%{_datadir}/%{name}/font1.ttf
-#n -s %{_datadir}/fonts/oflb-dignas-handwriting/phranzysko_-_Digna_s_Handwriting.ttf \
-#   $RPM_BUILD_ROOT%{_datadir}/%{name}/font1.ttf
+%makeinstall_std
 
 # Remove docs
 rm -r $RPM_BUILD_ROOT/usr/share/doc/
@@ -70,33 +53,21 @@ desktop-file-install \
 %find_lang %{name}
 
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-
-%post
-touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
-
-
-%postun
-if [ $1 -eq 0 ] ; then
-    touch --no-create %{_datadir}/icons/hicolor &>/dev/null
-    gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-fi
-
-%posttrans
-gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-
-
 %files -f %{name}.lang
-%defattr(-,root,root,-)
+%doc AUTHORS ChangeLog COPYING data/copyright.txt
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.xpm
-#{_datadir}/%{name}/FreeMonoBold.ttf
-#{_datadir}/%{name}/FreeSans.ttf
 
-%doc AUTHORS ChangeLog COPYING data/copyright.txt
 
+
+
+
+
+
+%changelog
+* Wed Nov 16 2011 Sergey Zhemoitel <serg@mandriva.org> 1.0.0-1
++ Revision: 730828
+- imported package zaz
 
