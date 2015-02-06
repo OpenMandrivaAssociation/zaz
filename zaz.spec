@@ -1,6 +1,6 @@
 Name:           zaz
 Version:        1.0.0
-Release:        1
+Release:        2
 Summary:        A puzzle game where the player has to arrange balls in triplets
 Group:          Games/Arcade
 # Music released under CC-BY-SA
