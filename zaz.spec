@@ -5,7 +5,7 @@ Summary:        A puzzle game where the player has to arrange balls in triplets
 Group:          Games/Arcade
 # Music released under CC-BY-SA
 License:        GPLv3+ and CC-BY-SA
-URL:            http://sourceforge.net/projects/zaz/
+URL:            https://sourceforge.net/projects/zaz/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires: pkgconfig(gl)
 BuildRequires: pkgconfig(SDL_image)
